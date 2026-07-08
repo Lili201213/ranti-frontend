@@ -71,8 +71,8 @@ export default function Page() {
           <div>
 
             <h1 className="text-4xl font-bold text-slate-800">
-              Gestión de Transportistas
-            </h1>
+  Gestión de Transportistas | Ranti
+</h1>
 
             <p className="text-gray-500 mt-2">
               Administra los transportistas registrados en el sistema.
