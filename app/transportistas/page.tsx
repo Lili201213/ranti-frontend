@@ -145,40 +145,34 @@ const editarTransportista = (transportista: Transportista) => {
 
   return (
 
-    <div className="min-h-screen bg-slate-100 py-10 px-6">
+   <div className="min-h-screen bg-slate-100 py-10 px-6">
 
-      <div className="max-w-7xl mx-auto">
+  <div className="max-w-7xl mx-auto">
 
+    <div className="bg-white rounded-2xl shadow-xl p-8">
 
-        <div className="bg-white rounded-2xl shadow-xl p-8">
+      <div className="flex items-center justify-between mb-8">
 
+        <div>
 
-          <div className="flex items-center justify-between mb-8">
+          <h1 className="text-4xl font-bold text-slate-800">
+            Gestión de Transportistas | Ranti
+          </h1>
 
+          <p className="text-gray-500 mt-2">
+            Administra los transportistas registrados en el sistema.
+          </p>
 
-            <div>
+        </div>
 
-              <h1 className="text-4xl font-bold text-slate-800">
-                Gestión de Transportistas
-              </h1>
+        <button
+          onClick={() => setMostrarFormulario(!mostrarFormulario)}
+          className="bg-blue-700 hover:bg-blue-800 text-white font-semibold px-6 py-3 rounded-lg shadow-md transition duration-300"
+        >
+          + Nuevo Transportista
+        </button>
 
-              <p className="text-gray-500 mt-2">
-                Administra los transportistas registrados en el sistema.
-              </p>
-
-            </div>
-
-
-
-            <button
-              onClick={() => setMostrarFormulario(!mostrarFormulario)}
-              className="bg-blue-700 hover:bg-blue-800 text-white font-semibold px-6 py-3 rounded-lg shadow-md transition duration-300"
-            >
-              + Nuevo Transportista
-            </button>
-
-
-          </div>
+      </div>
 
 
 
