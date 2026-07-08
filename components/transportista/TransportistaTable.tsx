@@ -2,9 +2,15 @@ import { Transportista } from "@/types/transportista";
 
 interface Props {
   transportistas: Transportista[];
+  onEditar: (transportista: Transportista) => void;
+  onEliminar: (idTransportista: number) => void;
 }
 
-export default function TransportistaTable({ transportistas }: Props) {
+export default function TransportistaTable({
+  transportistas,
+  onEditar,
+  onEliminar,
+}: Props) {
   return (
     <div className="mt-8 overflow-x-auto rounded-2xl shadow-xl bg-white">
 
@@ -21,46 +27,64 @@ export default function TransportistaTable({ transportistas }: Props) {
             <th className="px-6 py-4 text-left">Licencia</th>
             <th className="px-6 py-4 text-left">Tipo</th>
             <th className="px-6 py-4 text-center">Estado</th>
+            <th className="px-6 py-4 text-center">Acciones</th>
           </tr>
 
         </thead>
+
 
         <tbody>
 
           {transportistas.length === 0 ? (
             <tr>
               <td
-                colSpan={8}
+                colSpan={9}
                 className="text-center py-8 text-gray-500"
               >
                 No existen transportistas registrados.
               </td>
             </tr>
+
           ) : (
+
             transportistas.map((t, index) => (
+
               <tr
                 key={t.idTransportista}
                 className={`border-b hover:bg-slate-100 transition ${
                   index % 2 === 0 ? "bg-white" : "bg-slate-50"
                 }`}
               >
+
                 <td className="px-6 py-4">{t.dni}</td>
 
                 <td className="px-6 py-4 font-semibold text-slate-700">
                   {t.nombres}
                 </td>
 
-                <td className="px-6 py-4">{t.apellidos}</td>
+                <td className="px-6 py-4">
+                  {t.apellidos}
+                </td>
 
-                <td className="px-6 py-4">{t.correo}</td>
+                <td className="px-6 py-4">
+                  {t.correo}
+                </td>
 
-                <td className="px-6 py-4">{t.celular}</td>
+                <td className="px-6 py-4">
+                  {t.celular}
+                </td>
 
-                <td className="px-6 py-4">{t.licencia}</td>
+                <td className="px-6 py-4">
+                  {t.licencia}
+                </td>
 
-                <td className="px-6 py-4">{t.tipoLicencia}</td>
+                <td className="px-6 py-4">
+                  {t.tipoLicencia}
+                </td>
+
 
                 <td className="px-6 py-4 text-center">
+
                   {t.estado ? (
                     <span className="bg-green-100 text-green-700 px-3 py-1 rounded-full text-sm font-semibold">
                       Activo
@@ -70,8 +94,32 @@ export default function TransportistaTable({ transportistas }: Props) {
                       Inactivo
                     </span>
                   )}
+
                 </td>
+
+
+                <td className="px-6 py-4 text-center space-x-2">
+
+                  <button
+                    onClick={() => onEditar(t)}
+                    className="bg-yellow-500 text-white px-3 py-1 rounded-lg hover:bg-yellow-600"
+                  >
+                    Editar
+                  </button>
+
+
+                  <button
+                    onClick={() => onEliminar(t.idTransportista)}
+                    className="bg-red-600 text-white px-3 py-1 rounded-lg hover:bg-red-700"
+                  >
+                    Eliminar
+                  </button>
+
+                </td>
+
+
               </tr>
+
             ))
           )}
 
